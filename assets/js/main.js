@@ -4,6 +4,7 @@ moment.locale('fr');
 // Récupération des éléments du DOM
 const input = document.querySelector('.input-text');
 const inputSend = document.querySelector('.btn-absolute');
+const errorMsg = document.querySelector('.error-message');
 
 // Récupération de la date du jour + ajout dans le DOM
 const date = moment().format('dddd DD MMMM');
@@ -27,7 +28,13 @@ const weatherBalloon = ( cityName ) => {
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}`)
     .then(function(resp) { return resp.json() }) // convertion en donnée
     .then(function(data) {
-      console.log(data); // Récupération des données
+        console.log(data.message)
+      if(data.message == ('Nothing to geocode' || 'city not found')) { // Si la donnée entrée par l'utilisateur est vide ou ne correspond à aucune ville alors afficher un message d'erreur
+            errorMsg.innerHTML = '<p>Cette ville est introuvable</p>';
+            gsap.fromTo(".error-message", {y: 10, display: 'block', autoAlpha: 0}, {y: 0, autoAlpha: 1, duration: 2});
+      } else {
+            errorMsg.innerHTML = '';
+      }
     })
     .catch(function(error) {
       console.log(error);// Récupération des cas d'erreur

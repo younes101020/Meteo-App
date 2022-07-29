@@ -34,7 +34,7 @@ input:focus {
     font-size: 3rem;
 }
 
-.content .str_weight {
+.str_weight {
     font-weight: 500;
     font-style: italic;
 }
@@ -62,6 +62,20 @@ input:focus {
     border: none;
     top: 1rem;
     width: 1.5rem;
+}
+
+.error-message {
+    display: none;
+    position: absolute;
+    width: 100%;
+    text-align: center;
+}
+
+.error-message p {
+    font-size: 1rem;
+    color: #ff0000;
+    padding: .2rem 0 0 0;
+    font-style: italic;
 }
 
 .fa-solid {
