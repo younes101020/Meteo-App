@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;1,500&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/ab13d62308.js" crossorigin="anonymous"></script>
     <title>Météo - Application</title>
 </head>
 <body>
@@ -16,12 +17,13 @@
             <svg width="286" height="228" viewBox="0 0 286 228" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M286 129.051C286 158.509 255.341 182.403 217.546 182.403H51.7231C23.1517 182.403 0 164.346 0 142.081C0 119.84 23.1517 101.782 51.7231 101.782C53.8109 101.782 55.8415 101.919 57.8578 102.09C57.317 99.2375 57.0445 96.3567 57.0427 93.4717C57.0427 60.7423 91.091 34.2031 133.119 34.2031C167.539 34.2031 196.596 52.0099 205.991 76.4629C209.816 75.9626 213.685 75.711 217.56 75.7105C255.341 75.7105 286 99.5707 286 129.051Z" fill="white"/>
             </svg>
-        </div>                 
+        </div>
     </div>
     <div class="content">
         <p class="explanation"><span class="str_weight">Bonjour,</span><br>Entre le nom <span class="str_weight">d'une ville</span></p>
         <form class="form-horizontal" action="" method="get">
-            <input type="text">
+            <input type="text" class="input-text">
+            <input type="submit" class="btn-absolute" value=""><i class="fa-solid fa-share"></i>
         </form>
         <div class="card">
             <p>25°</p>
@@ -29,7 +31,6 @@
         </div>
     </div>
     
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
     <script src="./assets/lib/moment.js"></script>
     <script src="./assets/js/main.js"></script>
