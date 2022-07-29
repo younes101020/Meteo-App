@@ -22,22 +22,27 @@ inputSend.addEventListener('click', (e) => {
     weatherBalloon(input.value);
 });
 
+// Cette fonction contient une animation.
+// Elle est appellée dans le cas ou un message d'erreur est nécessaire
+const errFunc = () => gsap.fromTo(".error-message", {y: 10, display: 'block', autoAlpha: 0}, {y: 0, autoAlpha: 1, duration: 2});
+
 
 
 const weatherBalloon = ( cityName ) => {
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}`)
     .then(function(resp) { return resp.json() }) // convertion en donnée
     .then(function(data) {
-        console.log(data.message)
-      if(data.message == ('Nothing to geocode' || 'city not found')) { // Si la donnée entrée par l'utilisateur est vide ou ne correspond à aucune ville alors afficher un message d'erreur
+      if(data.message == 'Nothing to geocode') { 
+            errorMsg.innerHTML = '<p>Merci de saisir le nom d\'une ville avant de soumettre</p>';
+            errFunc();
+      } else if(data.message == 'city not found') {
             errorMsg.innerHTML = '<p>Cette ville est introuvable</p>';
-            gsap.fromTo(".error-message", {y: 10, display: 'block', autoAlpha: 0}, {y: 0, autoAlpha: 1, duration: 2});
-      } else {
-            errorMsg.innerHTML = '';
+            errFunc();
       }
     })
     .catch(function(error) {
-      console.log(error);// Récupération des cas d'erreur
+      errorMsg.innerHTML = error;
+      errFunc();
     });
   }
 
