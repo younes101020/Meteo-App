@@ -89,7 +89,8 @@ input:focus {
 }
 
 .card {
-    display: none;
+    position: absolute;
+    visibility: hidden;
     width: 250px;
     box-shadow: 0 15px 25px rgba(129, 124, 124, 0.2);
     height: 300px;
