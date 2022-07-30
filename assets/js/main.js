@@ -34,7 +34,7 @@ inputSend.addEventListener('click', (e) => {
 const errFunc = () => gsap.fromTo(".error-message", {y: 10, display: 'block', autoAlpha: 0}, {y: 0, autoAlpha: 1, duration: 2});
 
 
-
+// Cette fonction sert à appeler l'api en fonction du paramétre donnée lors de l'appel (la ville) elle renverra les donnée météo de cette dernière
 const weatherBalloon = ( cityName ) => {
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&appid=${apiKey}`)
     .then(function(resp) { return resp.json() }) // convertion en donnée json
