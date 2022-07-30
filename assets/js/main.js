@@ -54,6 +54,8 @@ const weatherBalloon = ( cityName ) => {
       }
     })
     .catch(function(error) {
+      // Dans le cas d'une application nodejs j'aurais envoyée le message d'erreur vers ma boite mail grace au module sendmailer
+      // Compte tenu du cas de figure actuel l'affichage du message d'erreur du serveur sera destinée à l'utilisateur
       errorMsg.innerHTML = `<p>${error}</p>`;
       errFunc();
     });
