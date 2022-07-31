@@ -1,11 +1,12 @@
 // Changement global de la langue momentjs
 moment.locale('fr');
 
-// Animation sans timeline avec la librairie GSAP
-gsap.fromTo(".cloud", {x: 500}, {x: 100, duration: 2});
-gsap.fromTo(".cloud", {scaleX:0.5, scaleY:0.5}, {scaleX:1, scaleY:1, duration:2});
-gsap.fromTo(".explanation", {y: 100, autoAlpha: 0}, {y: 10, autoAlpha: 1, duration: 2});
-gsap.fromTo(".fa-share", {y: 10, autoAlpha: 0}, {y: 0, autoAlpha: 1, duration: 2});
+// Animation avec utilisation de timeline GSAP
+let tl = gsap.timeline({repeat: 2, repeatDelay: 1});
+tl.fromTo(".cloud", {x: 500}, {x: 100});
+tl.fromTo(".cloud", {scaleX:0.5, scaleY:0.5}, {scaleX:1, scaleY:1, duration:2});
+tl.fromTo(".explanation", {y: 100, autoAlpha: 0}, {y: 10, autoAlpha: 1, duration: 2});
+tl.fromTo(".fa-share", {y: 10, autoAlpha: 0}, {y: 0, autoAlpha: 1, duration: 2});
 
 // Récupération des éléments du DOM
 const input = document.querySelector('.input-text');
