@@ -2,11 +2,11 @@
 moment.locale('fr');
 
 // Animation avec utilisation de timeline GSAP
-let tl = gsap.timeline({repeat: 2, repeatDelay: 1});
+let tl = gsap.timeline({duration:2});
 tl.fromTo(".cloud", {x: 500}, {x: 100});
-tl.fromTo(".cloud", {scaleX:0.5, scaleY:0.5}, {scaleX:1, scaleY:1, duration:2});
-tl.fromTo(".explanation", {y: 100, autoAlpha: 0}, {y: 10, autoAlpha: 1, duration: 2});
-tl.fromTo(".fa-share", {y: 10, autoAlpha: 0}, {y: 0, autoAlpha: 1, duration: 2});
+tl.fromTo(".cloud", {scaleX:0.5, scaleY:0.5}, {scaleX:1, scaleY:1});
+tl.fromTo(".explanation", {y: 100, autoAlpha: 0}, {y: 10, autoAlpha: 1});
+tl.fromTo(".fa-share", {y: 10, autoAlpha: 0}, {y: 0, autoAlpha: 1});
 
 // Récupération des éléments du DOM
 const input = document.querySelector('.input-text');
