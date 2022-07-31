@@ -15,7 +15,7 @@ const errorMsg = document.querySelector('.error-message');
 const celcius = document.querySelector('.celcius');
 const description = document.querySelector('.description');
 
-// Récupération de la date du jour + ajout dans le DOM
+// Récupération de la date du jour + intégration dans le DOM
 const date = moment().format('dddd DD MMMM');
 const dateField = document.getElementById('date');
 dateField.textContent = date;
@@ -48,6 +48,7 @@ const weatherBalloon = ( cityName ) => {
             errorMsg.innerHTML = '<p>Cette ville est introuvable</p>';
             errFunc();
       } else {
+          errorMsg.innerHTML = '';
         gsap.to(".cloud", {y: -200, autoAlpha: 0, duration: 3});
         gsap.to(".explanation", {autoAlpha: 0});
         gsap.to(".form-horizontal", {y: -280});
