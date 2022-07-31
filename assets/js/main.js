@@ -12,6 +12,7 @@ const input = document.querySelector('.input-text');
 const inputSend = document.querySelector('.btn-absolute');
 const errorMsg = document.querySelector('.error-message');
 const celcius = document.querySelector('.celcius');
+const description = document.querySelector('.description');
 
 // Récupération de la date du jour + ajout dans le DOM
 const date = moment().format('dddd DD MMMM');
@@ -36,7 +37,7 @@ const errFunc = () => gsap.fromTo(".error-message", {y: 10, display: 'block', au
 
 // Cette fonction sert à appeler l'api en fonction du paramétre donnée lors de l'appel (la ville) elle renverra les donnée météo de cette dernière
 const weatherBalloon = ( cityName ) => {
-    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&appid=${apiKey}`)
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&lang=fr&appid=${apiKey}`)
     .then(function(resp) { return resp.json() }) // convertion en donnée json
     .then(function(data) {
       if(data.message == 'Nothing to geocode') { 
@@ -46,11 +47,15 @@ const weatherBalloon = ( cityName ) => {
             errorMsg.innerHTML = '<p>Cette ville est introuvable</p>';
             errFunc();
       } else {
+        console.log(data)
         gsap.to(".cloud", {y: -200, autoAlpha: 0, duration: 3});
         gsap.to(".explanation", {autoAlpha: 0});
         gsap.to(".form-horizontal", {y: -280});
         gsap.fromTo(".card", {autoAlpha: 0, y: 100}, {y: 60, autoAlpha: 1});
-        celcius.textContent = Math.round(data.main.temp) + '°';
+        // Intégration de l'icone d'indication météo
+        celcius.innerHTML = Math.round(data.main.temp) + '°' + ` <img src='https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png' alt="icone meteo">`;
+        // Intégration de la description météo
+        description.textContent = data.weather[0].description;
       }
     })
     .catch(function(error) {
