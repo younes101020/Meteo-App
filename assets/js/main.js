@@ -1,4 +1,4 @@
-// Changement global de la langue pour l'utilisation francaise de momentjs
+// Changement global de la langue momentjs
 moment.locale('fr');
 
 // Animation sans timeline avec la librairie GSAP
@@ -23,19 +23,19 @@ dateField.textContent = date;
 let apiKey = "15cdb3b6d112afb5d24ccedff1409ddb";
 
 
-// Cette fonction me permet de bloquer le comportement par défaut de l'input submit lors du clique
+
 inputSend.addEventListener('click', (e) => {
+    // Cette fonction me permet de bloquer le comportement par défaut (rafraichissement de la page) de l'input submit lors du clique 
     e.preventDefault();
     // Lancement de la fonction d'appel api + passage en parametre de la valeur de l'input
     weatherBalloon(input.value);
 });
 
-// Cette fonction créer une animation
-// Elle est appellée dans le cas ou un message d'erreur est nécessaire
+// Cette fonction créer une animation spécifique au message d'erreur
 const errFunc = () => gsap.fromTo(".error-message", {y: 10, display: 'block', autoAlpha: 0}, {y: 0, autoAlpha: 1, duration: 2});
 
 
-// Cette fonction sert à appeler l'api en fonction du paramétre donnée lors de l'appel (la ville) elle renverra les donnée météo de cette dernière
+// Cette fonction sert à appeler l'api, en fonction du paramétre donnée lors de l'appel (la ville) elle renverra les donnée météo de cette dernière
 const weatherBalloon = ( cityName ) => {
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&lang=fr&appid=${apiKey}`)
     .then(function(resp) { return resp.json() }) // convertion en donnée json
@@ -47,7 +47,6 @@ const weatherBalloon = ( cityName ) => {
             errorMsg.innerHTML = '<p>Cette ville est introuvable</p>';
             errFunc();
       } else {
-        console.log(data)
         gsap.to(".cloud", {y: -200, autoAlpha: 0, duration: 3});
         gsap.to(".explanation", {autoAlpha: 0});
         gsap.to(".form-horizontal", {y: -280});
@@ -60,7 +59,6 @@ const weatherBalloon = ( cityName ) => {
     })
     .catch(function(error) {
       // Dans le cas d'une application nodejs j'aurais envoyée le message d'erreur vers ma boite mail grace au module sendmailer
-      // Compte tenu du cas de figure actuel l'affichage du message d'erreur du serveur sera destinée à l'utilisateur
       errorMsg.innerHTML = `<p>${error}</p>`;
       errFunc();
     });
