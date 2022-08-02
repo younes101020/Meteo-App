@@ -54,6 +54,10 @@ input:focus {
     border: solid #ffff 2px;
 }
 
+.form-horizontal input[type="text"]::placeholder {
+    color: rgba(255,255,255, 0.9);
+}
+
 .fa-street-view {
     left: 1rem;
     cursor: pointer !important;

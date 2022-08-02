@@ -76,7 +76,11 @@ const weatherBalloon = ( cityName ) => {
       navigator.geolocation.getCurrentPosition(function(position) {
         fetch( "https://maps.googleapis.com/maps/api/geocode/json?latlng="+ position.coords.latitude + "," + position.coords.longitude +`&sensor=false&key=${geoapiKey}`)
         .then(function(resp) { return resp.json() })
-        .then(function(data) { weatherBalloon(data.results[0].address_components[2].long_name) }) 
+        .then(function(data) { 
+          let usercityName = data.results[0].address_components[2].long_name;
+          input.placeholder = usercityName;
+          weatherBalloon(usercityName)
+        }) 
 
       });
     } else {
