@@ -78,6 +78,7 @@ const weatherBalloon = ( cityName ) => {
         .then(function(resp) { return resp.json() })
         .then(function(data) { 
           let usercityName = data.results[0].formatted_address.split(' ')[1].slice(0, -1);
+          input.value = '';
           input.placeholder = usercityName;
           weatherBalloon(usercityName)
         }) 
