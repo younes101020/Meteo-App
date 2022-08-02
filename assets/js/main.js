@@ -77,7 +77,9 @@ const weatherBalloon = ( cityName ) => {
         fetch( "https://maps.googleapis.com/maps/api/geocode/json?latlng="+ position.coords.latitude + "," + position.coords.longitude +`&sensor=false&key=${geoapiKey}`)
         .then(function(resp) { return resp.json() })
         .then(function(data) { 
-          let usercityName = data.results[0].formatted_address.split(' ')[1].slice(0, -1);
+          //let usercityName = data.results[0].formatted_address.split(' ')[1].slice(0, -1);
+          let usercityName = data.results;
+          console.log(usercityName)
           input.value = '';
           input.placeholder = usercityName;
           weatherBalloon(usercityName)
@@ -90,3 +92,13 @@ const weatherBalloon = ( cityName ) => {
     }
   })
 
+  /*Bonjour à tous !
+
+  Je souhaiterais vous partager une application météo que j'ai réalisée from scratch avec l'aide de deux api: openweathermap et geocoding.
+  
+  Ce side project m'a permis de consolider mes connaissances en Javascript mais également à m'initier à la librairie gsap.
+  
+  Repository -> https://lnkd.in/eAqZcNmE
+  Visuel de l'intégration -> https://lnkd.in/eRu4zQH3
+  
+  #github #project #react #reactdeveloper #javascript #api #weatherapp #weather #personnalproject*/
