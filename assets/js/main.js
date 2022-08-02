@@ -80,7 +80,8 @@ const weatherBalloon = ( cityName ) => {
           let usercityName = data.plus_code.compound_code.split(' ')[1].slice(0, -1);
           input.value = '';
           input.placeholder = usercityName;
-          //weatherBalloon(usercityName)
+
+          weatherBalloon(usercityName)
         }) 
 
       });
