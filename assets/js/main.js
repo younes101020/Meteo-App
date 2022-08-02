@@ -77,10 +77,10 @@ const weatherBalloon = ( cityName ) => {
         fetch( "https://maps.googleapis.com/maps/api/geocode/json?latlng="+ position.coords.latitude + "," + position.coords.longitude +`&sensor=false&key=${geoapiKey}`)
         .then(function(resp) { return resp.json() })
         .then(function(data) { 
-          let usercityName = data.results[0].address_components[1].long_name;
+          let usercityName = data.plus_code.compound_code.split(' ')[1].slice(0, -1);
           input.value = '';
           input.placeholder = usercityName;
-          weatherBalloon(usercityName)
+          //weatherBalloon(usercityName)
         }) 
 
       });
