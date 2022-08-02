@@ -46,12 +46,19 @@ input:focus {
 .form-horizontal input[type="text"] {
     width: 20em;
     height: 3em;
-    padding: 0 1rem;
+    padding: 0 3.5rem;
     color: #ffff;
     font-size: 1.2rem;
     background: transparent;
     border-radius: 1.1rem;
     border: solid #ffff 2px;
+}
+
+.fa-street-view {
+    left: 1rem;
+    cursor: pointer !important;
+    z-index: 9000 !important;
+    width: fit-content;
 }
 
 .btn-absolute {
